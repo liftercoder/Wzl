@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Wzl.cs" />
+    <Compile Include="Src\IWzl.cs" />
+    <Compile Include="Src\Wzl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WzlProgram.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
