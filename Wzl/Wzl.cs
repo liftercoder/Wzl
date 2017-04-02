@@ -10,33 +10,33 @@ namespace Wzl
         static Random rand = new Random();
 
         const int numGenerations = 100,
-                   muntationChancePercent = 5;
+                  muntationChancePercent = 5;
 
         const string set = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
-                      goal = "METHINKS IT IS LIKE A WEASEL";
+                     goal = "METHINKS IT IS LIKE A WEASEL";
 
         static void Main(string[] args)
         {
             sw.Start();
 
-            string weazel = CreateWeazel(goal.Length);
+            string weasel = Createweasel(goal.Length);
             int gen = 1;
 
             while (true)
             {
-                Print(string.Format("{0}: {1} ({2})", gen, weazel, GetGoalLikenessScore(weazel)));
+                Print(string.Format("{0}: {1} ({2})", gen, weasel, GetGoalLikenessScore(weasel)));
 
-                if (weazel == goal)
+                if (weasel == goal)
                     break;
 
-                string[] newGeneration = CreateNewGeneration(weazel, numGenerations);
+                string[] newGeneration = CreateNewGeneration(weasel, numGenerations);
 
                 for(int i = 0; i < numGenerations; i++)
                 {
-                    newGeneration[i] = AdvanceWeazel(newGeneration[i]);
+                    newGeneration[i] = Advanceweasel(newGeneration[i]);
                 }
 
-                weazel = GetSoleSurvivorOfNewGeneration(newGeneration);
+                weasel = GetSoleSurvivorOfNewGeneration(newGeneration);
 
                 gen++;
             }
@@ -59,7 +59,7 @@ namespace Wzl
             return children;
         }
 
-        static string CreateWeazel(int length)
+        static string Createweasel(int length)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -71,48 +71,48 @@ namespace Wzl
             return sb.ToString();
         }
 
-        static string AdvanceWeazel(string weazel)
+        static string Advanceweasel(string weasel)
         {
-            char[] weazelChars = weazel.ToCharArray();
+            char[] weaselChars = weasel.ToCharArray();
 
-            for(int i = 0; i < weazelChars.Length; i++)
+            for(int i = 0; i < weaselChars.Length; i++)
             {
                 int randNum = rand.Next(0, 99);
                 if(randNum < muntationChancePercent)
                 {
-                    weazelChars[i] = set[rand.Next(0, set.Length)];
+                    weaselChars[i] = set[rand.Next(0, set.Length)];
                 }
             }
 
-            return new string(weazelChars);
+            return new string(weaselChars);
         }
 
-        static string GetSoleSurvivorOfNewGeneration(string[] weazels)
+        static string GetSoleSurvivorOfNewGeneration(string[] weasels)
         {
-            string bestWeasel = weazels[0];
+            string bestWeasel = weasels[0];
             int bestScore = 0;
 
             for(int i = 0; i < numGenerations; i++)
             {
-                int score = GetGoalLikenessScore(weazels[i]);
+                int score = GetGoalLikenessScore(weasels[i]);
 
                 if(score > bestScore)
                 {
                     bestScore = score;
-                    bestWeasel = weazels[i];
+                    bestWeasel = weasels[i];
                 }
             }
 
             return bestWeasel;
         }
 
-        static int GetGoalLikenessScore(string weazel)
+        static int GetGoalLikenessScore(string weasel)
         {
             int score = 0;
 
-            for (int i = 0; i < weazel.Length; i++)
+            for (int i = 0; i < weasel.Length; i++)
             {
-                if (weazel[i] == goal[i])
+                if (weasel[i] == goal[i])
                     score++;
             }
 
