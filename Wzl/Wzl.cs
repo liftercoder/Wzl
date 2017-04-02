@@ -19,7 +19,7 @@ namespace Wzl
         {
             sw.Start();
 
-            string weasel = Createweasel(goal.Length);
+            string weasel = CreateWeasel(goal.Length);
             int gen = 1;
 
             while (true)
@@ -59,7 +59,7 @@ namespace Wzl
             return children;
         }
 
-        static string Createweasel(int length)
+        static string CreateWeasel(int length)
         {
             StringBuilder sb = new StringBuilder();
 
