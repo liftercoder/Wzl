@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wzl", "Wzl\Wzl.csproj", "{6FBD31F1-2088-4FEC-8428-A185F78F69B1}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WebWzl", "WebWzl\WebWzl.shproj", "{56B2C241-4E3E-4E1E-B257-6F76B4EE6993}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WebWzl\WebWzl.projitems*{56b2c241-4e3e-4e1e-b257-6f76b4ee6993}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

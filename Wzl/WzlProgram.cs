@@ -6,7 +6,7 @@ namespace Wzl
 {
     class WzlProgram
     {
-        const int numGenerations = 100,
+        const int numPerGeneration = 100,
                   muntationChancePercent = 5;
 
         const string set = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
@@ -15,7 +15,7 @@ namespace Wzl
         static Stopwatch _sw = new Stopwatch();
         static Random _rand = new Random();
 
-        static IWzl _wzl = new Src.Wzl(numGenerations, muntationChancePercent, set, goal, _rand);
+        static IWzl _wzl = new Src.Wzl(numPerGeneration, muntationChancePercent, set, goal, _rand);
 
         static void Main(string[] args)
         {
@@ -33,9 +33,9 @@ namespace Wzl
 
                 string[] newGeneration = _wzl.CreateNewGeneration(weasel);
 
-                for (int i = 0; i < numGenerations; i++)
+                for (int i = 0; i < numPerGeneration; i++)
                 {
-                    newGeneration[i] = _wzl.Advanceweasel(newGeneration[i]);
+                    newGeneration[i] = _wzl.AdvanceWeasel(newGeneration[i]);
                 }
 
                 weasel = _wzl.GetSoleSurvivorOfNewGeneration(newGeneration);
@@ -47,7 +47,7 @@ namespace Wzl
 
             Print(string.Format("Took {0} ms", _sw.ElapsedMilliseconds));
             Print(string.Format("Total generations: {0}", gen));
-            Print(string.Format("Total population size: {0}", gen * numGenerations + 1));
+            Print(string.Format("Total population size: {0}", gen * numPerGeneration + 1));
 
             Console.ReadKey();
         }

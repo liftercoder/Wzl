@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Web Wzl</title>
+    
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+    <script src="Src/Wzl.js"></script>
+
+    <script>
+
+        function Print(s) {
+            
+            document.getElementsByTagName("body")[0].innerHTML += s + "<br />";
+
+        }
+
+        window.onload = function () {
+
+            var numPerGeneration = 100;
+            var mutationChancePercent = 5;
+
+            var set = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+            var goal = "METHINKS IT IS LIKE A WEASEL";
+
+            var wzl = new Wzl(numPerGeneration, mutationChancePercent, set, goal);
+
+            var timeStarted = Date.now();
+            var weasel = wzl.CreateWeasel(goal.length);
+            var gen = 1;
+
+            while (true)
+            {
+                Print(gen + ": " + weasel + " (" + wzl.GetGoalLikenessScore(weasel) + ")");
+
+                if (weasel == goal)
+                    break;
+
+                var newGeneration = wzl.CreateNewGeneration(weasel);
+
+                for (var i = 0; i < numPerGeneration; i++)
+                {
+                    newGeneration[i] = wzl.AdvanceWeasel(newGeneration[i]);
+                }
+
+                weasel = wzl.GetSoleSurvivorOfNewGeneration(newGeneration);
+
+                gen++;
+            }
+
+            var timeElapsed = Date.now() - timeStarted;
+
+            Print("Took " + timeElapsed + " ms");
+            Print("Total generations: " + gen);
+            Print("Total population size: " + gen * numPerGeneration + 1);
+    };
+
+    </script>
+
+</body>
+
+</html>

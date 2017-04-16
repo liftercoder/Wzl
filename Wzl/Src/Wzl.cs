@@ -44,7 +44,7 @@ namespace Wzl.Src
             return sb.ToString();
         }
 
-        public string Advanceweasel(string weasel)
+        public string AdvanceWeasel(string weasel)
         {
             char[] weaselChars = weasel.ToCharArray();
 

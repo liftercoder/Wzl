@@ -6,7 +6,7 @@
 
         string CreateWeasel(int length);
 
-        string Advanceweasel(string weasel);
+        string AdvanceWeasel(string weasel);
 
         string GetSoleSurvivorOfNewGeneration(string[] weasels);
 
